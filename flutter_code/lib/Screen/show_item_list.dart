@@ -19,7 +19,6 @@ class _ShowItemState extends State<ShowItem> {
   @override
   void initState() {
     Calldata();
-    print("Length 1: ${product_data.length}");
     super.initState();
   }
 
@@ -30,12 +29,11 @@ class _ShowItemState extends State<ShowItem> {
     Map allproducts = await AllProductGet().timeout(
       Duration(seconds: 5),
       onTimeout: () {
-        // This function runs if timeout happens
         setState(() {
           Loading = false;
         });
         ErrorInput("Data Fetch Failed!");
-        return {}; // <-- must return a Map
+        return {};
       },
     );
     setState(() {
@@ -65,7 +63,6 @@ class _ShowItemState extends State<ShowItem> {
             actions: [
               ElevatedButton(
                 onPressed: () async {
-                  // print("from delete fuction ${index}");
                   setState(() {
                     Loading = true;
                   });
@@ -169,10 +166,9 @@ class _ShowItemState extends State<ShowItem> {
                                   ),
                                   IconButton(
                                     onPressed: () async {
-                                      // print("from delete button${product_data[index]["id"]}");
                                       ConfirmDelete(product_data[index]["id"]);
                                     },
-                                    icon: Icon(CupertinoIcons.delete),
+                                    icon: const Icon(CupertinoIcons.delete),
                                   ),
                                 ],
                               ),

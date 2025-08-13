@@ -1,0 +1,34 @@
+[1mdiff --git a/flutter_code/lib/Screen/show_item_list.dart b/flutter_code/lib/Screen/show_item_list.dart[m
+[1mindex 6307137..bcc8ffd 100644[m
+[1m--- a/flutter_code/lib/Screen/show_item_list.dart[m
+[1m+++ b/flutter_code/lib/Screen/show_item_list.dart[m
+[36m@@ -30,12 +30,11 @@[m [mclass _ShowItemState extends State<ShowItem> {[m
+     Map allproducts = await AllProductGet().timeout([m
+       Duration(seconds: 5),[m
+       onTimeout: () {[m
+[31m-        // This function runs if timeout happens[m
+         setState(() {[m
+           Loading = false;[m
+         });[m
+         ErrorInput("Data Fetch Failed!");[m
+[31m-        return {}; // <-- must return a Map[m
+[32m+[m[32m        return {};[m
+       },[m
+     );[m
+     setState(() {[m
+[1mdiff --git a/flutter_code/lib/Screen/updateProduct.dart b/flutter_code/lib/Screen/updateProduct.dart[m
+[1mindex 2f227ea..107f92b 100644[m
+[1m--- a/flutter_code/lib/Screen/updateProduct.dart[m
+[1m+++ b/flutter_code/lib/Screen/updateProduct.dart[m
+[36m@@ -63,7 +63,11 @@[m [mclass _UpdateProductState extends State<UpdateProduct> {[m
+     } else {[m
+       bool ans = await ProductUpdateReq(ValuesForm, id)[m
+           .timeout(Duration(seconds: 5), onTimeout: () {[m
+[32m+[m[32m        setState(() {[m
+[32m+[m[32m          Loading = false;[m
+[32m+[m[32m        });[m
+         return false;[m
+[32m+[m
+       });[m
+       if (ans) {[m
+         Successful("Data Updated Successfully");[m

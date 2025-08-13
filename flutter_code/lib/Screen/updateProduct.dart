@@ -63,7 +63,11 @@ class _UpdateProductState extends State<UpdateProduct> {
     } else {
       bool ans = await ProductUpdateReq(ValuesForm, id)
           .timeout(Duration(seconds: 5), onTimeout: () {
+        setState(() {
+          Loading = false;
+        });
         return false;
+
       });
       if (ans) {
         Successful("Data Updated Successfully");
@@ -82,7 +86,7 @@ class _UpdateProductState extends State<UpdateProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Update product"),
+        title: const Text("Update product"),
       ),
       body: Stack(
         children: [
