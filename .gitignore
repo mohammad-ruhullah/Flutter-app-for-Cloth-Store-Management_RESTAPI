@@ -1,0 +1,22 @@
+# Flutter
+build/
+*.lock
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+ENV/
+
+# General
+.DS_Store
+*.log
